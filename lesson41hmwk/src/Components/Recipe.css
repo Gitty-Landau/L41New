@@ -1,0 +1,21 @@
+.recipe {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.recipe h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.recipe ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.recipe ul li {
+  margin-bottom: 5px;
+}

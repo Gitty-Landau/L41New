@@ -1,0 +1,13 @@
+#recipe-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+#no-recipes {
+  display: flex;
+  background-color: #ffcccc;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 44px;
+}
