@@ -13,7 +13,7 @@ function RecipeSection(props) {
       <div id="recipe-list">
         {props.arr.map(function (recipeObj) {
           console.log(recipeObj);
-          return <Recipe recipeInfo={recipeObj}></Recipe>;
+          return <Recipe recipeInfo={recipeObj} delete={props.delete}></Recipe>;
         })}
       </div>
       {props.arr[0] == null && <div id="no-recipes">You have no recipes.</div>}

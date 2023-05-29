@@ -1,12 +1,14 @@
 import "./Form.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 function Form(props) {
+  const key = useRef(0);
   const [recipe, updateRecipe] = useState({});
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
+        key.current = key.current + 1;
         props.submitHandler(recipe);
         updateRecipe({ title: "", ingredients: [], method: "" });
       }}
@@ -17,7 +19,7 @@ function Form(props) {
         onChange={(e) => {
           const input = e.target.value;
           updateRecipe(function (prev) {
-            return { ...prev, title: input };
+            return { ...prev, title: input, key: key.current };
           });
         }}
         type="text"

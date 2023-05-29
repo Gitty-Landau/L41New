@@ -3,15 +3,17 @@ import "./App.css";
 import Form from "./Components/Form";
 import RecipeSection from "./Components/RecipeSection";
 import { useState } from "react";
+
 function App() {
   const [recipeArr, updateRecipeArr] = useState([]);
 
   function insertRecipe(recipeObj) {
-    console.log(recipeObj);
-    // const ingredientArr = recipeObj.ingredients.split(",");
-    // recipeObj.ingredients = [ingredientArr];
     let newArr = [...recipeArr, recipeObj];
-    console.log(newArr);
+    console.log(recipeObj);
+    updateRecipeArr(newArr);
+  }
+  function DeleteRecipe(key) {
+    const newArr = recipeArr.filter((recipe) => recipe.key !== key);
     updateRecipeArr(newArr);
   }
 
@@ -26,7 +28,7 @@ function App() {
           <Form submitHandler={insertRecipe}></Form>
         </div>
         <div class="right-column">
-          <RecipeSection arr={recipeArr}></RecipeSection>
+          <RecipeSection delete={DeleteRecipe} arr={recipeArr}></RecipeSection>
         </div>
       </div>
     </body>
