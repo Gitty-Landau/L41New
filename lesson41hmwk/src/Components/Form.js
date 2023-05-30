@@ -13,7 +13,7 @@ function Form(props) {
         updateRecipe({ title: "", ingredients: [], method: "" });
       }}
     >
-      <label for="recipe-name">Name:</label>
+      <label htmlFor="recipe-name">Name:</label>
       <input
         value={recipe.title}
         onChange={(e) => {
@@ -27,7 +27,7 @@ function Form(props) {
         required
       ></input>
       <br></br>
-      <label for="recipe-ingredients">Ingredients:</label>
+      <label htmlFor="recipe-ingredients">Ingredients:</label>
       <textarea
         value={recipe.ingredients}
         onChange={(e) => {
@@ -42,7 +42,7 @@ function Form(props) {
         required
       ></textarea>
       <br></br>
-      <label for="recipe-method">Method:</label>
+      <label htmlFor="recipe-method">Method:</label>
       <textarea
         value={recipe.method}
         onChange={(e) => {

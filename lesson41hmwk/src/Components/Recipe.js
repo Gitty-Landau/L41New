@@ -2,13 +2,12 @@ import "./Recipe.css";
 import Delete from "./Delete";
 
 function Recipe(props) {
-  console.log("key " + props.recipeInfo.key);
   return (
-    <div class="recipe">
+    <div className="recipe">
       <h3>{props.recipeInfo.title}</h3>
       <ul>
-        {props.recipeInfo.ingredients.map(function (ingredient) {
-          return <li>{ingredient}</li>;
+        {props.recipeInfo.ingredients.map(function (ingredient, index) {
+          return <li key={index}>{ingredient}</li>;
         })}
       </ul>
       <h3>Method</h3>

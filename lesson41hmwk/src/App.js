@@ -1,16 +1,34 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { Post, Get } from "./ApiFunction";
 import Form from "./Components/Form";
 import RecipeSection from "./Components/RecipeSection";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [recipeArr, updateRecipeArr] = useState([]);
 
+  useEffect(function () {
+    fetchRecipes();
+  }, []);
+
+  async function fetchRecipes() {
+    const response = await fetch(
+      "https://react-fa48e-default-rtdb.firebaseio.com/:Recipe.json"
+    );
+    const data = await response.json();
+    if (data != null) {
+      const prevRecipes = Object.values(data);
+      updateRecipeArr([...prevRecipes]);
+    }
+  }
   function insertRecipe(recipeObj) {
     let newArr = [...recipeArr, recipeObj];
-    console.log(recipeObj);
+
     updateRecipeArr(newArr);
+    Post(
+      "https://react-fa48e-default-rtdb.firebaseio.com/:Recipe.json",
+      recipeObj
+    );
   }
   function DeleteRecipe(key) {
     const newArr = recipeArr.filter((recipe) => recipe.key !== key);
@@ -18,20 +36,20 @@ function App() {
   }
 
   return (
-    <body>
+    <main>
       <nav>
         <h1>Recipe App</h1>
       </nav>
-      <div class="container">
-        <div class="left-column">
+      <div className="container">
+        <div className="left-column">
           <h3>Add Recipe</h3>
           <Form submitHandler={insertRecipe}></Form>
         </div>
-        <div class="right-column">
+        <div className="right-column">
           <RecipeSection delete={DeleteRecipe} arr={recipeArr}></RecipeSection>
         </div>
       </div>
-    </body>
+    </main>
   );
 }
 

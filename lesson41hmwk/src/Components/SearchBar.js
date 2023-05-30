@@ -1,9 +1,9 @@
 import "./SearchBar.css";
 import { useState } from "react";
-function SearchBar(props) {
+function SearchBar() {
   return (
     <>
-      <label for="search-box">Search:</label>
+      <label htmlFor="search-box">Search:</label>
       <input type="text" id="search-box"></input>
     </>
   );
