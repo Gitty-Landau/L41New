@@ -18,6 +18,10 @@ function App() {
     const data = await response.json();
     if (data != null) {
       const prevRecipes = Object.values(data);
+      prevRecipes.forEach(function (recipe, index) {
+        recipe.key = index;
+      });
+      //updateRecipeArr([...prevRecipes]);
       updateRecipeArr([...prevRecipes]);
     }
   }
